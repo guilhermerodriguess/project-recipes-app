@@ -1,11 +1,11 @@
 import React from 'react';
 import MenuInferior from '../components/MenuInferior';
 
-const ExplorarIngredientes = () => (
+const ExplorarBebidas = () => (
   <div>
-    <p>Tela de Explorar Ingredientes</p>
+    <p>Tela de Explorar Bebidas</p>
     <MenuInferior />
   </div>
 );
 
-export default ExplorarIngredientes;
+export default ExplorarBebidas;

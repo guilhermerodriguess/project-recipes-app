@@ -6,24 +6,25 @@ import Explorar from './pages/TelaDeExplorar';
 import PrincipalDeReceitas from './pages/PrincipalDeReceitas';
 import ReceitasEmProgresso from './pages/ReceitasEmProgresso';
 import ExplorarPorNacionalidades from './pages/ExplorarPorNacionalidades';
-import ExplorarBebidasOuComidas from './pages/ExplorarBebibasOuComidas';
+import ExplorarBebidas from './pages/ExplorarBebibas';
 import Perfil from './pages/Perfil';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
 import ReceitasFeitas from './pages/ReceitasFeitas';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ExplorarIngredientes from './pages/ExplorarIngredientes';
+import ExplorarComidas from './pages/ExplorarComidas';
 
 function App() {
   return (
     <Switch>
       <Route
-        path="/foods/{id-da-receita}/in-progress"
+        path="/foods/:id/in-progress"
         component={ ReceitasEmProgresso }
       />
 
       <Route
-        path="/foods/{id-da-receita}"
+        path="/foods/:id"
         component={ DetalhesDeReceita }
       />
 
@@ -33,12 +34,12 @@ function App() {
       />
 
       <Route
-        path="/drinks/{id-da-receita}/in-progress"
+        path="/drinks/:id/in-progress"
         component={ ReceitasEmProgresso }
       />
 
       <Route
-        path="/drinks/{id-da-receita}"
+        path="/drinks/:id"
         component={ DetalhesDeReceita }
       />
 
@@ -59,7 +60,7 @@ function App() {
 
       <Route
         path="/explore/foods"
-        component={ ExplorarBebidasOuComidas }
+        component={ ExplorarComidas }
       />
 
       <Route
@@ -69,7 +70,7 @@ function App() {
 
       <Route
         path="/explore/drinks"
-        component={ ExplorarBebidasOuComidas }
+        component={ ExplorarBebidas }
       />
 
       <Route
