@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const Perfil = () => (
   <div>
-    <p>Tela de Perfil</p>
+    <Header pageTitle="Profile" isSearch={ false } />
   </div>
 );
 

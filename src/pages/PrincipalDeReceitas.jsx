@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const PrincipalDeReceitas = () => (
   <div>
-    <p>Tela Principal de Receitas</p>
+    <Header pageTitle="Foods" isSearch />
   </div>
 );
 

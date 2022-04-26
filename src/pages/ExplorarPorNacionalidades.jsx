@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const ExplorarPorNacionalidades = () => (
   <div>
-    <p>Tela de Explorar por Nacionalidades</p>
+    <Header pageTitle="Explore Nationalities" isSearch />
   </div>
 );
 

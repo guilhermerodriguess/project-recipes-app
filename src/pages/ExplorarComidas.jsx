@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const ExplorarBebidasOuComidas = () => (
   <div>
-    <p>Tela de Explorar Bebidas ou Comidas</p>
+    <Header pageTitle="Explore Foods" isSearch={ false } />
   </div>
 );
 

@@ -1,29 +1,35 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+
+// CSS
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// PAGES
 import Login from './pages/Login';
 import DetalhesDeReceita from './pages/DetalhesDeReceita';
 import Explorar from './pages/TelaDeExplorar';
 import PrincipalDeReceitas from './pages/PrincipalDeReceitas';
 import ReceitasEmProgresso from './pages/ReceitasEmProgresso';
 import ExplorarPorNacionalidades from './pages/ExplorarPorNacionalidades';
-import ExplorarBebidasOuComidas from './pages/ExplorarBebibasOuComidas';
+import ExplorarComidas from './pages/ExplorarComidas';
+import ExplorarBebidas from './pages/ExplorarBebidas';
 import Perfil from './pages/Perfil';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
 import ReceitasFeitas from './pages/ReceitasFeitas';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import ExplorarIngredientes from './pages/ExplorarIngredientes';
+import PrincipalDeBebidas from './pages/PrincipalDeBebidas';
 
 function App() {
   return (
     <Switch>
       <Route
-        path="/foods/{id-da-receita}/in-progress"
+        path="/foods/:id/in-progress"
         component={ ReceitasEmProgresso }
       />
 
       <Route
-        path="/foods/{id-da-receita}"
+        path="/foods/:id"
         component={ DetalhesDeReceita }
       />
 
@@ -33,18 +39,18 @@ function App() {
       />
 
       <Route
-        path="/drinks/{id-da-receita}/in-progress"
+        path="/drinks/:id/in-progress"
         component={ ReceitasEmProgresso }
       />
 
       <Route
-        path="/drinks/{id-da-receita}"
+        path="/drinks/:id"
         component={ DetalhesDeReceita }
       />
 
       <Route
         path="/drinks"
-        component={ PrincipalDeReceitas }
+        component={ PrincipalDeBebidas }
       />
 
       <Route
@@ -59,7 +65,7 @@ function App() {
 
       <Route
         path="/explore/foods"
-        component={ ExplorarBebidasOuComidas }
+        component={ ExplorarComidas }
       />
 
       <Route
@@ -69,7 +75,7 @@ function App() {
 
       <Route
         path="/explore/drinks"
-        component={ ExplorarBebidasOuComidas }
+        component={ ExplorarBebidas }
       />
 
       <Route
