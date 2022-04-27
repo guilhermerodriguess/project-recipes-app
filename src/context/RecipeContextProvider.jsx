@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import RecipeContext from './RecipesContext';
 
 const RecipeContextProvider = ({ children }) => {
-  const contextValue = {
-
-  };
+  const contextValue = {};
 
   return (
     <RecipeContext.Provider value={ contextValue }>

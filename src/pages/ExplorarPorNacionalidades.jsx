@@ -1,9 +1,10 @@
 import React from 'react';
+import Header from '../components/Header';
 import MenuInferior from '../components/MenuInferior';
 
 const ExplorarPorNacionalidades = () => (
   <div>
-    <p>Tela de Explorar por Nacionalidades</p>
+    <Header pageTitle="Explore Nationalities" isSearch />
     <MenuInferior />
   </div>
 );

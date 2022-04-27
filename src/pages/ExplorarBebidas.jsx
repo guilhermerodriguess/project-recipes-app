@@ -2,11 +2,11 @@ import React from 'react';
 import Header from '../components/Header';
 import MenuInferior from '../components/MenuInferior';
 
-const PrincipalDeReceitas = () => (
+const ExplorarBebidasOuComidas = () => (
   <div>
-    <Header pageTitle="Foods" isSearch />
+    <Header pageTitle="Explore Drinks" isSearch={ false } />
     <MenuInferior />
   </div>
 );
 
-export default PrincipalDeReceitas;
+export default ExplorarBebidasOuComidas;

@@ -1,9 +1,10 @@
 import React from 'react';
+import Header from '../components/Header';
 import MenuInferior from '../components/MenuInferior';
 
 const Perfil = () => (
   <div>
-    <p>Tela de Perfil</p>
+    <Header pageTitle="Profile" isSearch={ false } />
     <MenuInferior />
   </div>
 );
