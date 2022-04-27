@@ -10,7 +10,7 @@ const Header = ({ pageTitle, isSearch }) => {
   const [showSearch, setShowSearch] = useState(false);
 
   return (
-    <div>
+    <header>
       <div className="header">
         <Link to="/profile">
           <img data-testid="profile-top-btn" src={ profileIcon } alt="Profile" />
@@ -37,7 +37,7 @@ const Header = ({ pageTitle, isSearch }) => {
           placeholder="Pesquisar"
         />
       )}
-    </div>
+    </header>
   );
 };
 
