@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const ReceitasFavoritas = () => (
   <div>
-    <p>Receitas Favoritas</p>
+    <Header pageTitle="Favorite Recipes" isSearch={ false } />
   </div>
 );
 
