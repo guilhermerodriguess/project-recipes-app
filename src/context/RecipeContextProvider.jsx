@@ -23,6 +23,22 @@ const RecipeContextProvider = ({ children }) => {
     history.push(`${history.location.pathname}/${recipeOne[id]}`);
   };
 
+  const requestFoodByButtonFilter = async (category) => {
+    const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
+
+    const response = await fetch(url);
+    const { meals } = await response.json();
+    setData(meals);
+  };
+
+  const requestDrinkByButtonFilter = async (category) => {
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`;
+
+    const response = await fetch(url);
+    const { drinks } = await response.json();
+    setData(drinks);
+  };
+
   // Requisição inicial das comidas e dos filtros das comidas
   const requestInitialFood = async () => {
     const url = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
@@ -128,6 +144,8 @@ const RecipeContextProvider = ({ children }) => {
     requestAPIByFilter,
     requestAPIInitial,
     filterRecipe,
+    requestFoodByButtonFilter,
+    requestDrinkByButtonFilter,
   };
 
   return (
