@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import RecipeContext from '../context/RecipesContext';
-import RecipeFilter from './RecipeFilter';
+import DrinkFilter from './DrinkFilter';
+import FoodFilter from './FoodFilter';
 
 const CardRecipe = () => {
   const { data, requestAPIInitial } = useContext(RecipeContext);
@@ -16,7 +17,7 @@ const CardRecipe = () => {
   if (history.location.pathname === '/foods') {
     return (
       <>
-        <RecipeFilter />
+        <FoodFilter />
         {
           data.map(({ strMeal, strMealThumb }, index) => {
             // Filtra os 12 primeiros resultados.
@@ -46,7 +47,7 @@ const CardRecipe = () => {
   if (history.location.pathname === '/drinks') {
     return (
       <>
-        <RecipeFilter />
+        <DrinkFilter />
         {
           data.map(({ strDrink, strDrinkThumb }, index) => {
             if (index < MAX_RECIPES) {
