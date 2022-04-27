@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const ReceitasFeitas = () => (
   <div>
-    <p>Receitas Feitas</p>
+    <Header pageTitle="Done Recipes" isSearch={ false } />
   </div>
 );
 
