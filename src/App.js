@@ -23,7 +23,7 @@ function App() {
       />
 
       <Route
-        path="/foods/{id-da-receita}"
+        path="/foods/:id"
         component={ DetalhesDeReceita }
       />
 
@@ -38,7 +38,7 @@ function App() {
       />
 
       <Route
-        path="/drinks/{id-da-receita}"
+        path="/drinks/:id"
         component={ DetalhesDeReceita }
       />
 

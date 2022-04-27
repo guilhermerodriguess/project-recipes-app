@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import RecipeContext from './RecipesContext';
 
 const RecipeContextProvider = ({ children }) => {
-  const contextValue = {
+  // Utilizando somente um data para Drinks e Meals, pois os 2 não estarão renderizados ao mesmo tempo.
+  const [data, setData] = useState([]);
 
+  const contextValue = {
+    data,
+    setData,
   };
 
   return (
