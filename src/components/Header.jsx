@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import BarraDeBusca from './BarraDeBusca';
 
 // IMAGES
 import profileIcon from '../images/profileIcon.svg';
@@ -30,12 +31,7 @@ const Header = ({ pageTitle, isSearch }) => {
       </div>
 
       {showSearch && (
-        <input
-          type="text"
-          className="search-input"
-          data-testid="search-input"
-          placeholder="Pesquisar"
-        />
+        <BarraDeBusca />
       )}
     </header>
   );
