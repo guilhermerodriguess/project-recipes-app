@@ -23,6 +23,7 @@ const RecipeContextProvider = ({ children }) => {
     history.push(`${history.location.pathname}/${recipeOne[id]}`);
   };
 
+  // Requisição das comidas de acordo com o botão clicado
   const requestFoodByButtonFilter = async (category) => {
     const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
 
@@ -31,6 +32,7 @@ const RecipeContextProvider = ({ children }) => {
     setData(meals);
   };
 
+  // Requisição dos drinks de acordo com o botão clicado
   const requestDrinkByButtonFilter = async (category) => {
     const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`;
 
