@@ -22,7 +22,22 @@ const RecipeContextProvider = ({ children }) => {
     history.push(`${history.location.pathname}/${recipeOne[id]}`);
   };
 
-  const requestFoods = async () => {
+  const requestInitialFood = async () => {
+    const url = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+    const response = await fetch(url);
+    const { meals } = await response.json();
+    setData(meals);
+  };
+
+  const requestInitialDrink = async () => {
+    const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+    const response = await fetch(url);
+    const { drinks } = await response.json();
+    console.log(drinks);
+    setData(drinks);
+  };
+
+  const requestFoodsByFilter = async () => {
     const urlFilter = filter === 'i' ? 'filter' : 'search';
     const url = `https://www.themealdb.com/api/json/v1/1/${urlFilter}.php?${filter}=${textFilter}`;
     const response = await fetch(url);
@@ -39,7 +54,7 @@ const RecipeContextProvider = ({ children }) => {
 
   // Requisições das Api's de drinks.
   // Caso não receba nenhuma receita, retorna um alerta.
-  const requestDrinks = async () => {
+  const requestDrinksByFilter = async () => {
     const urlFilter = filter === 'i' ? 'filter' : 'search';
     const url = `https://www.thecocktaildb.com/api/json/v1/1/${urlFilter}.php?${filter}=${textFilter}`;
     const response = await fetch(url);
@@ -56,26 +71,37 @@ const RecipeContextProvider = ({ children }) => {
 
   // Caso esteja na página foods, solicita Api's de comida.
   // Caso esteja na página drinks, solicita Api's de drinks.
-  const foodsOrDrinks = () => {
+  const foodsOrDrinksByFilter = () => {
     if (history.location.pathname === '/foods') {
-      requestFoods();
+      requestFoodsByFilter();
     }
     if (history.location.pathname === '/drinks') {
-      requestDrinks();
+      requestDrinksByFilter();
+    }
+  };
+
+  // Caso esteja na página foods, solicita Api's de comida.
+  // Caso esteja na página drinks, solicita Api's de drinks.
+  const requestAPIInitial = () => {
+    if (history.location.pathname === '/foods') {
+      requestInitialFood();
+    }
+    if (history.location.pathname === '/drinks') {
+      requestInitialDrink();
     }
   };
 
   // Funções para filtrar por tipo de Radio selecionado.
-  const requestAPI = (event) => {
+  const requestAPIByFilter = (event) => {
     event.preventDefault();
     if (filter === 'f') {
       // Caso o filtro de por letra inicial receba mais de uma letra, retorna um alerta.
       if (textFilter.length > 1) {
         return global.alert('Your search must have only 1 (one) character');
       }
-      return foodsOrDrinks();
+      return foodsOrDrinksByFilter();
     }
-    return foodsOrDrinks();
+    return foodsOrDrinksByFilter();
   };
 
   const contextValue = {
@@ -85,7 +111,8 @@ const RecipeContextProvider = ({ children }) => {
     setFilter,
     textFilter,
     setTextFilter,
-    requestAPI,
+    requestAPIByFilter,
+    requestAPIInitial,
   };
 
   return (
