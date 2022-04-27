@@ -6,11 +6,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <RecipeContextProvider>
-    <BrowserRouter>
+  <BrowserRouter>
+    <RecipeContextProvider>
       <App />
-    </BrowserRouter>
-  </RecipeContextProvider>, document.getElementById('root'),
+    </RecipeContextProvider>
+  </BrowserRouter>, document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change
