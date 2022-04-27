@@ -29,3 +29,8 @@ body {
   padding: 10px 15px;
   width: 100%;
 }
+
+footer {
+  bottom: 0;
+  position: fixed;
+}
