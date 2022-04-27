@@ -10,7 +10,6 @@ const Login = () => {
   const {
     email,
     setEmail } = useContext(RecipeContext);
-  console.log(btnDisabled);
 
   const validation = () => {
     const minPass = 6;
