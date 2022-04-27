@@ -4,19 +4,18 @@ import { useHistory } from 'react-router';
 import RecipeContext from '../context/RecipesContext';
 
 const Login = () => {
+  const [btnDisabled, setBtnDisabled] = useState(true);
   const history = useHistory();
   const [password, setPassword] = useState('');
   const {
     email,
-    setEmail,
-    btnDisabled,
-    setBtnDisabled } = useContext(RecipeContext);
+    setEmail } = useContext(RecipeContext);
   console.log(btnDisabled);
 
   const validation = () => {
     const minPass = 6;
     const emailFormat = (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/).test(email);
-    const validatePass = password.length >= minPass;
+    const validatePass = password.length > minPass;
 
     if (validatePass && emailFormat) {
       setBtnDisabled(false);

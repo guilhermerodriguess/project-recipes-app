@@ -4,13 +4,10 @@ import RecipeContext from './RecipesContext';
 
 const RecipeContextProvider = ({ children }) => {
   const [email, setEmail] = useState('');
-  const [btnDisabled, setBtnDisabled] = useState(true);
 
   const contextValue = {
     email,
     setEmail,
-    btnDisabled,
-    setBtnDisabled,
   };
 
   return (
