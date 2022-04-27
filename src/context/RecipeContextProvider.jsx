@@ -6,6 +6,7 @@ import RecipeContext from './RecipesContext';
 const RecipeContextProvider = ({ children }) => {
   // Utilizando somente um data para Drinks e Meals, pois os 2 não estarão renderizados ao mesmo tempo.
   const [data, setData] = useState([]);
+  const [filterRecipe, setFilterRecipe] = useState([]);
   // Deixa os inputs controlados.
   const [filter, setFilter] = useState('');
   const [textFilter, setTextFilter] = useState('');
@@ -22,19 +23,32 @@ const RecipeContextProvider = ({ children }) => {
     history.push(`${history.location.pathname}/${recipeOne[id]}`);
   };
 
+  // Requisição inicial das comidas e dos filtros das comidas
   const requestInitialFood = async () => {
     const url = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+    const urlFilter = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
+
     const response = await fetch(url);
     const { meals } = await response.json();
     setData(meals);
+
+    const responseFilter = await fetch(urlFilter);
+    const { meals: category } = await responseFilter.json();
+    setFilterRecipe(category);
   };
 
+  // Requisição inicial dos drinks e dos filtros dos drinks
   const requestInitialDrink = async () => {
     const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+    const urlFilter = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
+
     const response = await fetch(url);
     const { drinks } = await response.json();
-    console.log(drinks);
     setData(drinks);
+
+    const responseFilter = await fetch(urlFilter);
+    const { drinks: category } = await responseFilter.json();
+    setFilterRecipe(category);
   };
 
   const requestFoodsByFilter = async () => {
@@ -113,6 +127,7 @@ const RecipeContextProvider = ({ children }) => {
     setTextFilter,
     requestAPIByFilter,
     requestAPIInitial,
+    filterRecipe,
   };
 
   return (
