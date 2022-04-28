@@ -1,11 +1,17 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import getIngredientsAndMeasures from '../services/telaDeDetalhes';
+import CardRecipeRecomendation from '../components/CardRecipeRecomendation';
+import RecipeContext from '../context/RecipesContext';
+import { getIngredientsAndMeasures,
+  requestRecipeRecomendation } from '../services/telaDeDetalhes';
 
 const DetalhesDeReceita = ({ match: { params: { id } } }) => {
-  const [dataRecipe, setDataRecipe] = useState(['']);
+  const { dataRecipe, setDataRecipe, loading, setLoading,
+    setRecomendation } = useContext(RecipeContext);
+  /* const [dataRecipe, setDataRecipe] = useState(['']);
   const [loading, setLoading] = useState(true);
+  const [recomendation, setRecomendation] = useState([]); */
   const idFood = id;
   const history = useHistory();
   const pathFood = history.location.pathname.includes('/foods');
@@ -23,6 +29,7 @@ const DetalhesDeReceita = ({ match: { params: { id } } }) => {
 
   useEffect(() => {
     requestRecipeAPI();
+    requestRecipeRecomendation(pathFood, setRecomendation);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -66,10 +73,17 @@ const DetalhesDeReceita = ({ match: { params: { id } } }) => {
           title="vídeo"
         />
       )}
-        <h6 data-testid={ `${0}-recomendation-card` }>CARD DE RECEITAS</h6>
+        <CardRecipeRecomendation />
         <button type="button" data-testid="share-btn">Compartilhar</button>
         <button type="button" data-testid="favorite-btn">Favoritar</button>
-        <button type="button" data-testid="start-recipe-btn">Start Recipe</button>
+        <button
+          type="button"
+          data-testid="start-recipe-btn"
+          className="start-btn"
+        >
+          Start Recipe
+
+        </button>
       </div>
     )
   );

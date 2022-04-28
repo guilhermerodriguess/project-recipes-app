@@ -1,6 +1,6 @@
 import React from 'react';
 
-const getIngredientsAndMeasures = (dataRecipe) => {
+export const getIngredientsAndMeasures = (dataRecipe) => {
   const keysFromDataRecipe = Object.keys(dataRecipe);
 
   const arrayOfIngredientsKeys = keysFromDataRecipe
@@ -26,4 +26,12 @@ const getIngredientsAndMeasures = (dataRecipe) => {
   return recipeIngredients;
 };
 
-export default getIngredientsAndMeasures;
+export const requestRecipeRecomendation = async (path, funcToSetState) => {
+  const drinkURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+  const mealURL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+  const URL = path ? drinkURL : mealURL;
+  const response = await fetch(URL);
+  const { drinks, meals } = await response.json();
+  const data = path ? drinks : meals;
+  funcToSetState(data);
+};

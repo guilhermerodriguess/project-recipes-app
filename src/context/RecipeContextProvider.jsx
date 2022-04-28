@@ -11,6 +11,10 @@ const RecipeContextProvider = ({ children }) => {
   // Deixa os inputs controlados.
   const [filter, setFilter] = useState('');
   const [textFilter, setTextFilter] = useState('');
+  const [dataRecipe, setDataRecipe] = useState(['']);
+  const [loading, setLoading] = useState(true);
+  const [recomendation, setRecomendation] = useState([]);
+  const [pathFood, setPathFood] = useState(true);
 
   // Requisições das Api's de comidas.
   // Caso não receba nenhuma receita, retorna um alerta.
@@ -90,6 +94,14 @@ const RecipeContextProvider = ({ children }) => {
     requestAPI,
     email,
     setEmail,
+    dataRecipe,
+    setDataRecipe,
+    loading,
+    setLoading,
+    recomendation,
+    setRecomendation,
+    pathFood,
+    setPathFood,
   };
 
   return (
