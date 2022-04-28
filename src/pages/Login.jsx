@@ -12,7 +12,14 @@ const Login = () => {
     setEmail } = useContext(RecipeContext);
   console.log(btnDisabled);
 
-  const validation = () => {
+  const onClick = () => {
+    localStorage.setItem('mealsToken', 1);
+    localStorage.setItem('cocktailsToken', 1);
+    localStorage.setItem('user', JSON.stringify({ email }));
+    history.push('/foods');
+  };
+
+  useEffect(() => {
     const minPass = 6;
     const emailFormat = (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/).test(email);
     const validatePass = password.length > minPass;
@@ -22,17 +29,6 @@ const Login = () => {
     } else {
       setBtnDisabled(true);
     }
-  };
-
-  const onClick = () => {
-    localStorage.setItem('mealsToken', 1);
-    localStorage.setItem('cocktailsToken', 1);
-    localStorage.setItem('user', JSON.stringify({ email }));
-    history.push('/foods');
-  };
-
-  useEffect(() => {
-    validation();
   }, [email, password]);
 
   return (
