@@ -11,6 +11,7 @@ const CardRecipe = () => {
 
   useEffect(() => {
     requestAPIInitial();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Caso o Card esteja em /foods, renderiza as chaves de Foods.

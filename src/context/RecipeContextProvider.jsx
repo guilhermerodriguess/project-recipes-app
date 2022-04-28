@@ -11,11 +11,11 @@ const RecipeContextProvider = ({ children }) => {
   // Armazenando a requisição da API dos filtros em uma variável
   const [filterRecipe, setFilterRecipe] = useState([]);
 
-  // Deixa os inputs controlados.  
+  // Deixa os inputs controlados.
   const [filter, setFilter] = useState('');
   const [textFilter, setTextFilter] = useState('');
-  
-  // Memorizando o ID da receita em uma variável  
+
+  // Memorizando o ID da receita em uma variável
   const [recipeID, setRecipeID] = useState('');
   const [dataRecipe, setDataRecipe] = useState(['']);
   const [loading, setLoading] = useState(true);
@@ -195,7 +195,6 @@ const RecipeContextProvider = ({ children }) => {
       event.preventDefault();
     }
     if (filter === 'f') {
-      // Caso o filtro de por letra inicial receba mais de uma letra, retorna um alerta.
       if (textFilter.length > 1) {
         return global.alert('Your search must have only 1 (one) character');
       }
@@ -234,7 +233,7 @@ const RecipeContextProvider = ({ children }) => {
     recomendation,
     setRecomendation,
     pathFood,
-    setPathFood,    
+    setPathFood,
   };
 
   return (
