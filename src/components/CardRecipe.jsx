@@ -19,11 +19,18 @@ const CardRecipe = () => {
       <>
         <FoodFilter />
         {
-          data.map(({ strMeal, strMealThumb }, index) => {
+          data.map(({ strMeal, strMealThumb, idMeal }, index) => {
             // Filtra os 12 primeiros resultados.
             if (index < MAX_RECIPES) {
               return (
-                <div key={ strMeal } data-testid={ `${index}-recipe-card` }>
+                <div
+                  key={ strMeal }
+                  data-testid={ `${index}-recipe-card` }
+                  onClick={ () => history.push(`/foods/${idMeal}`) }
+                  role="button"
+                  tabIndex={ 0 }
+                  onKeyPress={ () => {} }
+                >
                   <h6 data-testid={ `${index}-card-name` }>
                     {strMeal}
                   </h6>
@@ -49,10 +56,17 @@ const CardRecipe = () => {
       <>
         <DrinkFilter />
         {
-          data.map(({ strDrink, strDrinkThumb }, index) => {
+          data.map(({ strDrink, strDrinkThumb, idDrink }, index) => {
             if (index < MAX_RECIPES) {
               return (
-                <div key={ strDrink } data-testid={ `${index}-recipe-card` }>
+                <div
+                  key={ strDrink }
+                  data-testid={ `${index}-recipe-card` }
+                  onClick={ () => history.push(`/drinks/${idDrink}`) }
+                  role="button"
+                  tabIndex={ 0 }
+                  onKeyPress={ () => {} }
+                >
                   <h6 data-testid={ `${index}-card-name` }>
                     {strDrink}
                   </h6>
