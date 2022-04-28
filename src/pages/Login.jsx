@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Login.css';
 import { useHistory } from 'react-router';
-// import RecipeContext from '../context/RecipesContext';
 
 const Login = () => {
   const [password, setPassword] = useState('');
