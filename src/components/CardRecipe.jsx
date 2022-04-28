@@ -5,7 +5,7 @@ import DrinkFilter from './DrinkFilter';
 import FoodFilter from './FoodFilter';
 
 const CardRecipe = () => {
-  const { data, requestAPIInitial } = useContext(RecipeContext);
+  const { data, requestAPIInitial, setRecipeID } = useContext(RecipeContext);
   const MAX_RECIPES = 12;
   const history = useHistory();
 
@@ -26,7 +26,10 @@ const CardRecipe = () => {
                 <div
                   key={ strMeal }
                   data-testid={ `${index}-recipe-card` }
-                  onClick={ () => history.push(`/foods/${idMeal}`) }
+                  onClick={ () => {
+                    history.push(`/foods/${idMeal}`);
+                    setRecipeID(idMeal);
+                  } }
                   role="button"
                   tabIndex={ 0 }
                   onKeyPress={ () => {} }
@@ -62,7 +65,10 @@ const CardRecipe = () => {
                 <div
                   key={ strDrink }
                   data-testid={ `${index}-recipe-card` }
-                  onClick={ () => history.push(`/drinks/${idDrink}`) }
+                  onClick={ () => {
+                    history.push(`/foods/${idMeal}`);
+                    setRecipeID(idDrink);
+                  } }
                   role="button"
                   tabIndex={ 0 }
                   onKeyPress={ () => {} }

@@ -12,6 +12,7 @@ const RecipeContextProvider = ({ children }) => {
   // Deixa os inputs controlados.
   const [filter, setFilter] = useState('');
   const [textFilter, setTextFilter] = useState('');
+  const [recipeID, setRecipeID] = useState('');
 
   // Requisições das Api's de comidas.
   // Caso não receba nenhuma receita, retorna um alerta.
@@ -152,6 +153,8 @@ const RecipeContextProvider = ({ children }) => {
     requestDrinkByButtonFilter,
     email,
     setEmail,
+    recipeID,
+    setRecipeID,
   };
 
   return (
