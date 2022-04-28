@@ -87,3 +87,19 @@ html, body {
   padding: 10px;
   width: 250px;
 }
+
+.recomendations {
+  display: flex;
+  overflow: scroll;
+}
+
+.recipe-recomendation {
+  margin: 0 10px;
+  margin-left: 0;
+  padding: 10px;
+}
+
+.start-btn {
+  bottom: 0;
+  position: fixed;
+}
