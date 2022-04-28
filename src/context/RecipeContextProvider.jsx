@@ -5,16 +5,12 @@ import PropTypes from 'prop-types';
 import RecipeContext from './RecipesContext';
 
 const RecipeContextProvider = ({ children }) => {
-  const [email, setEmail] = useState('');
   // Utilizando somente um data para Drinks e Meals, pois os 2 não estarão renderizados ao mesmo tempo.
   const [data, setData] = useState([]);
+
   // Deixa os inputs controlados.
   const [filter, setFilter] = useState('');
   const [textFilter, setTextFilter] = useState('');
-
-  // Requisições das Api's de comidas.
-  // Caso não receba nenhuma receita, retorna um alerta.
-  const ALERT_NO_RECIPE = 'Sorry, we haven\'t found any recipes for these filters.';
 
   // Usa o Hook useHistory para manipular a url.
   const history = useHistory();
@@ -24,6 +20,11 @@ const RecipeContextProvider = ({ children }) => {
     history.push(`${history.location.pathname}/${recipeOne[id]}`);
   };
 
+  // Caso não receba nenhuma receita, retorna um alerta.
+  const ALERT_NO_RECIPE = 'Sorry, we haven\'t found any recipes for these filters.';
+
+  // Requisições das Api's de comidas.
+  // Caso não receba nenhuma receita, retorna um alerta.
   const requestFoods = async () => {
     const urlFilter = filter === 'i' ? 'filter' : 'search';
     const url = `https://www.themealdb.com/api/json/v1/1/${urlFilter}.php?${filter}=${textFilter}`;
@@ -88,8 +89,6 @@ const RecipeContextProvider = ({ children }) => {
     textFilter,
     setTextFilter,
     requestAPI,
-    email,
-    setEmail,
   };
 
   return (
