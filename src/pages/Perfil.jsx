@@ -5,7 +5,8 @@ import Header from '../components/Header';
 import MenuInferior from '../components/MenuInferior';
 
 const Perfil = (props) => {
-  // const user = JSON.parse(localStorage.getItem('user'));
+  const getStorage = JSON.parse(localStorage.getItem('user'));
+  const user = getStorage !== null ? getStorage.email : '';
 
   const handleLogout = () => {
     const { history } = props;
@@ -31,7 +32,7 @@ const Perfil = (props) => {
       <Header pageTitle="Profile" isSearch={ false } />
 
       <div className="profile-container">
-        {/* <h5 data-testid="profile-email">{user.email}</h5> */}
+        <h5 data-testid="profile-email">{user}</h5>
 
         <Link data-testid="profile-done-btn" to="/done-recipes">
           <button type="button">Done Recipes</button>

@@ -1,16 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Login.css';
 import { useHistory } from 'react-router';
-import RecipeContext from '../context/RecipesContext';
+// import RecipeContext from '../context/RecipesContext';
 
 const Login = () => {
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
   const [btnDisabled, setBtnDisabled] = useState(true);
   const history = useHistory();
-  const [password, setPassword] = useState('');
-  const {
-    email,
-    setEmail } = useContext(RecipeContext);
-  console.log(btnDisabled);
 
   const onClick = () => {
     localStorage.setItem('mealsToken', 1);
