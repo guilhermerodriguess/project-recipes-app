@@ -181,11 +181,12 @@ const RecipeContextProvider = ({ children }) => {
   // Caso esteja na página drinks, solicita Api's de drinks.
   const requestAPIInitial = () => {
     if (history.location.pathname === '/foods') {
-      requestInitialFood();
+      return requestInitialFood();
     }
     if (history.location.pathname === '/drinks') {
-      requestInitialDrink();
+      return requestInitialDrink();
     }
+    return requestInitialFood();
   };
 
   // Funções para filtrar por tipo de Radio selecionado.
