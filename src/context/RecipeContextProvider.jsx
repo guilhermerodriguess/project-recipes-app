@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import RecipeContext from './RecipesContext';
@@ -198,10 +198,6 @@ const RecipeContextProvider = ({ children }) => {
     }
     return foodsOrDrinksByFilter();
   };
-
-  useEffect(() => {
-    requestAPIByFilter();
-  }, [toggleRequestAPI]);
 
   const contextValue = {
     data,

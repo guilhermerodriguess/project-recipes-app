@@ -10,7 +10,9 @@ const CardIngredient = () => {
     setFilter,
     setTextFilter,
     toggleRequestAPI,
-    setToggleRequestAPI } = useContext(RecipeContext);
+    setToggleRequestAPI,
+    requestAPIByFilter,
+  } = useContext(RecipeContext);
   const MAX_RECIPES = 12;
   // Filtra os 12 primeiros resultados.
   const maxRecipes = data.filter((element, index) => index < MAX_RECIPES);
@@ -19,6 +21,11 @@ const CardIngredient = () => {
   useEffect(() => {
     exploreFoodsOrDrinks();
   }, []);
+
+  useEffect(() => {
+    requestAPIByFilter();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [toggleRequestAPI]);
 
   const redirectToPrincipalRecipe = (ingredient) => {
     setToggleRequestAPI(!toggleRequestAPI);
