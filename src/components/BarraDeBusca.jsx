@@ -3,12 +3,12 @@ import RecipeContext from '../context/RecipesContext';
 
 const BarraDeBusca = () => {
   const {
-    setFilter, textFilter, setTextFilter, requestAPI,
+    setFilter, textFilter, setTextFilter, requestAPIByFilter,
   } = useContext(RecipeContext);
 
   return (
     <div>
-      <form onSubmit={ (e) => requestAPI(e) }>
+      <form onSubmit={ (e) => requestAPIByFilter(e) }>
         <div>
           <input
             data-testid="search-input"
