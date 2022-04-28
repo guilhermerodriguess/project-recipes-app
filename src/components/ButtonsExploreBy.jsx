@@ -9,6 +9,21 @@ const ButtonsExploreBy = () => {
     history.push(`${pathname}/${target.value}`);
   };
 
+  const surpriseMe = async () => {
+    if (pathname === '/explore/foods') {
+      const url = 'https://www.themealdb.com/api/json/v1/1/random.php';
+      const response = await fetch(url);
+      const { meals } = await response.json();
+      history.push(`/foods/${meals[0].idMeal}`);
+    }
+    if (pathname === '/explore/drinks') {
+      const url = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+      const response = await fetch(url);
+      const { drinks } = await response.json();
+      history.push(`/drinks/${drinks[0].idDrink}`);
+    }
+  };
+
   return (
     <>
       <button
@@ -18,7 +33,6 @@ const ButtonsExploreBy = () => {
         onClick={ (e) => redirectToExploreBy(e) }
       >
         By Ingredient
-
       </button>
       {
         pathname === '/explore/foods'
@@ -34,7 +48,13 @@ const ButtonsExploreBy = () => {
           )
           : null
       }
-      <button data-testid="explore-surprise" type="button">Surprise me!</button>
+      <button
+        data-testid="explore-surprise"
+        onClick={ () => surpriseMe() }
+        type="button"
+      >
+        Surprise me!
+      </button>
     </>
   );
 };

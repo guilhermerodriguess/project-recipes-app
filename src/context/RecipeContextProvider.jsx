@@ -49,7 +49,7 @@ const RecipeContextProvider = ({ children }) => {
     const url = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
     const response = await fetch(url);
     const { meals } = await response.json();
-    // Função que randomiza o resultado da API, fazendo sentido a página ExplorarIngredientes, porém não passa no teste.
+    // Função que randomiza o resultado da API, dando sentido a página ExplorarIngredientes, porém não passa no teste.
     // let randomMeals = [];
     // meals
     //   .forEach(() => {
@@ -66,7 +66,7 @@ const RecipeContextProvider = ({ children }) => {
     const url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
     const response = await fetch(url);
     const { drinks } = await response.json();
-    // Função que randomiza o resultado da API, fazendo sentido a página ExplorarIngredientes, porém não passa no teste.
+    // Função que randomiza o resultado da API, dando sentido a página ExplorarIngredientes, porém não passa no teste.
     // let randomDrinks = [];
     // drinks
     //   .forEach(() => {
@@ -194,7 +194,6 @@ const RecipeContextProvider = ({ children }) => {
       event.preventDefault();
     }
     if (filter === 'f') {
-      // Caso o filtro de por letra inicial receba mais de uma letra, retorna um alerta.
       if (textFilter.length > 1) {
         return global.alert('Your search must have only 1 (one) character');
       }
