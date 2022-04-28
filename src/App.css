@@ -90,12 +90,12 @@ html, body {
 
 .recomendations {
   display: flex;
-  overflow: scroll;  
+  overflow: scroll;
 }
 
 .recipe-recomendation {
-  margin: 0px 10px;
-  margin-left: 0px;
+  margin: 0 10px;
+  margin-left: 0;
   padding: 10px;
 }
 
