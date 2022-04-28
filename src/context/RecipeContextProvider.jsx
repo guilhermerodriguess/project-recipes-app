@@ -11,14 +11,13 @@ const RecipeContextProvider = ({ children }) => {
   // Armazenando a requisição da API dos filtros em uma variável
   const [filterRecipe, setFilterRecipe] = useState([]);
 
-  // Deixa os inputs controlados.  
+  // Deixa os inputs controlados.
   const [filter, setFilter] = useState('');
   const [textFilter, setTextFilter] = useState('');
-  
-  // Memorizando o ID da receita em uma variável  
+
+  // Memorizando o ID da receita em uma variável
   const [recipeID, setRecipeID] = useState('');
   const [dataRecipe, setDataRecipe] = useState(['']);
-  const [loading, setLoading] = useState(true);
   const [recomendation, setRecomendation] = useState([]);
   const [pathFood, setPathFood] = useState(true);
 
@@ -225,12 +224,10 @@ const RecipeContextProvider = ({ children }) => {
     setToggleRequestAPI,
     dataRecipe,
     setDataRecipe,
-    loading,
-    setLoading,
     recomendation,
     setRecomendation,
     pathFood,
-    setPathFood,    
+    setPathFood,
   };
 
   return (

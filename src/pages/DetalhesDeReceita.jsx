@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import CardRecipeRecomendation from '../components/CardRecipeRecomendation';
 import RecipeContext from '../context/RecipesContext';
@@ -7,11 +7,10 @@ import { getIngredientsAndMeasures,
   requestRecipeRecomendation } from '../services/telaDeDetalhes';
 
 const DetalhesDeReceita = ({ match: { params: { id } } }) => {
-  const { dataRecipe, setDataRecipe, loading, setLoading,
+  const { dataRecipe, setDataRecipe,
     setRecomendation } = useContext(RecipeContext);
-  /* const [dataRecipe, setDataRecipe] = useState(['']);
   const [loading, setLoading] = useState(true);
-  const [recomendation, setRecomendation] = useState([]); */
+
   const idFood = id;
   const history = useHistory();
   const pathFood = history.location.pathname.includes('/foods');
