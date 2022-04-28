@@ -8,10 +8,12 @@ const RecipeContextProvider = ({ children }) => {
   const [email, setEmail] = useState('');
   // Utilizando somente um data para Drinks e Meals, pois os 2 não estarão renderizados ao mesmo tempo.
   const [data, setData] = useState([]);
+  // Armazenando a requisição da API dos filtros em uma variável
   const [filterRecipe, setFilterRecipe] = useState([]);
   // Deixa os inputs controlados.
   const [filter, setFilter] = useState('');
   const [textFilter, setTextFilter] = useState('');
+  // Memorizando o ID da receita em uma variável
   const [recipeID, setRecipeID] = useState('');
 
   // Requisições das Api's de comidas.
