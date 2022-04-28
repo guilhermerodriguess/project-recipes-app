@@ -10,7 +10,8 @@ const CardIngredient = () => {
     setFilter,
     setTextFilter,
     toggleRequestAPI,
-    setToggleRequestAPI } = useContext(RecipeContext);
+    setToggleRequestAPI,
+  } = useContext(RecipeContext);
   const MAX_RECIPES = 12;
   // Filtra os 12 primeiros resultados.
   const maxRecipes = data.filter((element, index) => index < MAX_RECIPES);

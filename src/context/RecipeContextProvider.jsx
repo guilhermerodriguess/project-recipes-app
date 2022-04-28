@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import RecipeContext from './RecipesContext';
@@ -18,7 +18,6 @@ const RecipeContextProvider = ({ children }) => {
   // Memorizando o ID da receita em uma variável
   const [recipeID, setRecipeID] = useState('');
   const [dataRecipe, setDataRecipe] = useState(['']);
-  const [loading, setLoading] = useState(true);
   const [recomendation, setRecomendation] = useState([]);
   const [pathFood, setPathFood] = useState(true);
 
@@ -203,10 +202,6 @@ const RecipeContextProvider = ({ children }) => {
     return foodsOrDrinksByFilter();
   };
 
-  useEffect(() => {
-    requestAPIByFilter();
-  }, [toggleRequestAPI]);
-
   const contextValue = {
     data,
     setData,
@@ -228,8 +223,6 @@ const RecipeContextProvider = ({ children }) => {
     setToggleRequestAPI,
     dataRecipe,
     setDataRecipe,
-    loading,
-    setLoading,
     recomendation,
     setRecomendation,
     pathFood,
