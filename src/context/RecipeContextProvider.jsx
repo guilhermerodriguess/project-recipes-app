@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
 import RecipeContext from './RecipesContext';
 
@@ -20,13 +20,68 @@ const RecipeContextProvider = ({ children }) => {
   // Requisições das Api's de comidas.
   // Caso não receba nenhuma receita, retorna um alerta.
   const ALERT_NO_RECIPE = 'Sorry, we haven\'t found any recipes for these filters.';
+  // Criei este toggle para quando na pagina explorar, for clicado em algum ingrediente,
+  // ao redirecionar para a pagina de receitas principal, muda esse estado, para no UseEffect, fazer a requisição da API,
+  // Por que sem esse Toggle, ele só pega o valor antigo de filter e textFilter.
+  const [toggleRequestAPI, setToggleRequestAPI] = useState(false);
 
   // Usa o Hook useHistory para manipular a url.
   const history = useHistory();
-  const redirectToDetail = (result) => {
+  const redirectToDetail = (result, foodsOrDrinks) => {
     const recipeOne = result[0];
-    const id = Object.keys(recipeOne)[0];
-    history.push(`${history.location.pathname}/${recipeOne[id]}`);
+    const id = recipeOne[`id${foodsOrDrinks}`];
+    history.push(`${history.location.pathname}/${id}`);
+  };
+
+  // Função para trazer um inteiro aleatório, recebendo como paramento o length máximo da resposta da Api.
+  // const getRandomInt = (min, max) => {
+  //   min = Math.ceil(min);
+  //   max = Math.floor(max);
+  //   return Math.floor(Math.random() * (max - min)) + min;
+  // };
+
+  // Função que faz a requisição da api de ingredientes, e organiza de forma aleatória cada ingrediente.
+  const requestIngredientsFoods = async () => {
+    const url = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
+    const response = await fetch(url);
+    const { meals } = await response.json();
+    // Função que randomiza o resultado da API, fazendo sentido a página ExplorarIngredientes, porém não passa no teste.
+    // let randomMeals = [];
+    // meals
+    //   .forEach(() => {
+    //     if (randomMeals.length < meals.length) {
+    //       const numberRandom = getRandomInt(0, meals.length - 1);
+    //       const objectRandom = meals.filter((meal, index) => index === numberRandom);
+    //       randomMeals = [...randomMeals, ...objectRandom];
+    //     }
+    //   });
+    return setData(meals);
+  };
+
+  const requestIngredientsDrinks = async () => {
+    const url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
+    const response = await fetch(url);
+    const { drinks } = await response.json();
+    // Função que randomiza o resultado da API, fazendo sentido a página ExplorarIngredientes, porém não passa no teste.
+    // let randomDrinks = [];
+    // drinks
+    //   .forEach(() => {
+    //     if (randomDrinks.length < drinks.length) {
+    //       const numberRandom = getRandomInt(0, drinks.length - 1);
+    //       const objectRandom = drinks.filter((drink, index) => index === numberRandom);
+    //       randomDrinks = [...randomDrinks, ...objectRandom];
+    //     }
+    //   });
+    return setData(drinks);
+  };
+
+  const exploreFoodsOrDrinks = () => {
+    if (history.location.pathname === '/explore/foods/ingredients') {
+      requestIngredientsFoods();
+    }
+    if (history.location.pathname === '/explore/drinks/ingredients') {
+      requestIngredientsDrinks();
+    }
   };
 
   // Requisição das comidas de acordo com o botão clicado
@@ -86,7 +141,7 @@ const RecipeContextProvider = ({ children }) => {
     }
     setData(meals);
     if (meals.length === 1) {
-      redirectToDetail(meals);
+      return redirectToDetail(meals, 'Meal');
     }
   };
 
@@ -103,7 +158,7 @@ const RecipeContextProvider = ({ children }) => {
     }
     setData(drinks);
     if (drinks.length === 1) {
-      redirectToDetail(drinks);
+      redirectToDetail(drinks, 'Drink');
     }
   };
 
@@ -131,7 +186,9 @@ const RecipeContextProvider = ({ children }) => {
 
   // Funções para filtrar por tipo de Radio selecionado.
   const requestAPIByFilter = (event) => {
-    event.preventDefault();
+    if (event !== undefined) {
+      event.preventDefault();
+    }
     if (filter === 'f') {
       // Caso o filtro de por letra inicial receba mais de uma letra, retorna um alerta.
       if (textFilter.length > 1) {
@@ -141,6 +198,10 @@ const RecipeContextProvider = ({ children }) => {
     }
     return foodsOrDrinksByFilter();
   };
+
+  useEffect(() => {
+    requestAPIByFilter();
+  }, [toggleRequestAPI]);
 
   const contextValue = {
     data,
@@ -158,6 +219,9 @@ const RecipeContextProvider = ({ children }) => {
     setEmail,
     recipeID,
     setRecipeID,
+    exploreFoodsOrDrinks,
+    toggleRequestAPI,
+    setToggleRequestAPI,
   };
 
   return (

@@ -66,7 +66,7 @@ const CardRecipe = () => {
                   key={ strDrink }
                   data-testid={ `${index}-recipe-card` }
                   onClick={ () => {
-                    history.push(`/foods/${idMeal}`);
+                    history.push(`/drinks/${idDrink}`);
                     setRecipeID(idDrink);
                   } }
                   role="button"
