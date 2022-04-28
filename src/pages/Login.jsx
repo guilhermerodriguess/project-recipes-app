@@ -1,27 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Login.css';
 import { useHistory } from 'react-router';
-import RecipeContext from '../context/RecipesContext';
 
 const Login = () => {
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
   const [btnDisabled, setBtnDisabled] = useState(true);
   const history = useHistory();
-  const [password, setPassword] = useState('');
-  const {
-    email,
-    setEmail } = useContext(RecipeContext);
-
-  const validation = () => {
-    const minPass = 6;
-    const emailFormat = (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/).test(email);
-    const validatePass = password.length > minPass;
-
-    if (validatePass && emailFormat) {
-      setBtnDisabled(false);
-    } else {
-      setBtnDisabled(true);
-    }
-  };
 
   const onClick = () => {
     localStorage.setItem('mealsToken', 1);
@@ -31,7 +16,15 @@ const Login = () => {
   };
 
   useEffect(() => {
-    validation();
+    const minPass = 6;
+    const emailFormat = (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/).test(email);
+    const validatePass = password.length > minPass;
+
+    if (validatePass && emailFormat) {
+      setBtnDisabled(false);
+    } else {
+      setBtnDisabled(true);
+    }
   }, [email, password]);
 
   return (
