@@ -8,14 +8,19 @@ const CardRecipe = () => {
   const { data,
     requestAPIInitial,
     setRecipeID,
+    requestAPIByFilter,
+    toggleRequestAPI,
   } = useContext(RecipeContext);
   const MAX_RECIPES = 12;
   const history = useHistory();
 
   useEffect(() => {
-    requestAPIInitial();
+    if (toggleRequestAPI) {
+      return requestAPIByFilter();
+    }
+    return requestAPIInitial();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [toggleRequestAPI]);
 
   // Caso o Card esteja em /foods, renderiza as chaves de Foods.
   if (history.location.pathname === '/foods') {
