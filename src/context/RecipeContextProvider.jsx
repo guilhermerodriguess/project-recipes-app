@@ -10,6 +10,7 @@ const RecipeContextProvider = ({ children }) => {
   const [data, setData] = useState([]);
   // Armazenando a requisição da API dos filtros em uma variável
   const [filterRecipe, setFilterRecipe] = useState([]);
+
   // Deixa os inputs controlados.
   const [filter, setFilter] = useState('');
   const [textFilter, setTextFilter] = useState('');
