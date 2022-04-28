@@ -5,13 +5,22 @@ import DrinkFilter from './DrinkFilter';
 import FoodFilter from './FoodFilter';
 
 const CardRecipe = () => {
-  const { data, requestAPIInitial, setRecipeID } = useContext(RecipeContext);
+  const { data,
+    requestAPIInitial,
+    setRecipeID,
+    requestAPIByFilter,
+    toggleRequestAPI,
+  } = useContext(RecipeContext);
   const MAX_RECIPES = 12;
   const history = useHistory();
 
   useEffect(() => {
-    requestAPIInitial();
-  }, []);
+    if (toggleRequestAPI) {
+      return requestAPIByFilter();
+    }
+    return requestAPIInitial();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [toggleRequestAPI]);
 
   // Caso o Card esteja em /foods, renderiza as chaves de Foods.
   if (history.location.pathname === '/foods') {
@@ -24,7 +33,7 @@ const CardRecipe = () => {
             if (index < MAX_RECIPES) {
               return (
                 <div
-                  key={ strMeal }
+                  key={ Math.random() }
                   data-testid={ `${index}-recipe-card` }
                   onClick={ () => {
                     history.push(`/foods/${idMeal}`);
@@ -63,10 +72,10 @@ const CardRecipe = () => {
             if (index < MAX_RECIPES) {
               return (
                 <div
-                  key={ strDrink }
+                  key={ Math.random() }
                   data-testid={ `${index}-recipe-card` }
                   onClick={ () => {
-                    history.push(`/foods/${idMeal}`);
+                    history.push(`/drinks/${idDrink}`);
                     setRecipeID(idDrink);
                   } }
                   role="button"
