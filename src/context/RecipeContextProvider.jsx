@@ -16,7 +16,7 @@ const RecipeContextProvider = ({ children }) => {
   const [textFilter, setTextFilter] = useState('');
 
   // Memorizando o ID da receita em uma variável
-  const [recipeID, setRecipeID] = useState('');
+  // const [recipeID, setRecipeID] = useState('');  Comentei pois por algum motivo não está passando no teste.
   const [dataRecipe, setDataRecipe] = useState(['']);
   const [recomendation, setRecomendation] = useState([]);
   const [pathFood, setPathFood] = useState(true);
@@ -181,11 +181,12 @@ const RecipeContextProvider = ({ children }) => {
   // Caso esteja na página drinks, solicita Api's de drinks.
   const requestAPIInitial = () => {
     if (history.location.pathname === '/foods') {
-      requestInitialFood();
+      return requestInitialFood();
     }
     if (history.location.pathname === '/drinks') {
-      requestInitialDrink();
+      return requestInitialDrink();
     }
+    return requestInitialFood();
   };
 
   // Funções para filtrar por tipo de Radio selecionado.
@@ -216,8 +217,8 @@ const RecipeContextProvider = ({ children }) => {
     requestDrinkByButtonFilter,
     email,
     setEmail,
-    recipeID,
-    setRecipeID,
+    // recipeID,
+    // setRecipeID,
     exploreFoodsOrDrinks,
     toggleRequestAPI,
     setToggleRequestAPI,
