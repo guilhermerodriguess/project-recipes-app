@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useContext } from 'react';
 import CardNationalities from '../components/CardNationalities';
 import DropDownNationalities from '../components/DropdownNationalities';
@@ -10,31 +11,29 @@ const ExplorarPorNacionalidades = () => {
   const [selected, setSelected] = useState('All');
   const { requestAPIInitial, setData } = useContext(RecipeContext);
 
-  const allNationalities = async () => {
-    const url = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
-    const response = await fetch(url);
-    const { meals } = await response.json();
-    setNationalities(meals);
-  };
-
   useEffect(() => {
+    const allNationalities = async () => {
+      const url = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
+      const response = await fetch(url);
+      const { meals } = await response.json();
+      setNationalities(meals);
+    };
     allNationalities();
     requestAPIInitial();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const searchByArea = async () => {
-    if (selected === 'All') {
-      return requestAPIInitial();
-    }
-    const url = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${selected}`;
-    const response = await fetch(url);
-    const { meals } = await response.json();
-    return setData(meals);
-  };
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => { searchByArea(); }, [selected]);
+  useEffect(() => {
+    const searchByArea = async () => {
+      if (selected === 'All') {
+        return requestAPIInitial();
+      }
+      const url = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${selected}`;
+      const response = await fetch(url);
+      const { meals } = await response.json();
+      return setData(meals);
+    };
+    searchByArea();
+  }, [selected]);
 
   return (
     <div>
