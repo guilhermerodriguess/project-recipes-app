@@ -10,8 +10,6 @@ const CardRecipeRecomendation = () => {
   const recipesRecomendation = recomendation
     .filter((element, index) => index < MAXRECOMENDATION);
 
-  console.log(recipesRecomendation.length);
-
   return (
     <div className="recomendations">
       {recipesRecomendation.map((element, index) => (

@@ -16,7 +16,7 @@ const CardRecipe = () => {
 
   useEffect(() => {
     if (toggleRequestAPI) {
-      requestAPIByFilter();
+      return requestAPIByFilter();
     }
     requestAPIInitial();
   // eslint-disable-next-line react-hooks/exhaustive-deps
