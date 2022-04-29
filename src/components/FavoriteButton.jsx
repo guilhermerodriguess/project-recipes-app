@@ -23,6 +23,7 @@ function FavoriteButton({ id, path }) {
     const isFavoriteRecipe = savedFavoriteRecipes
       .some((element) => element.id.includes(id));
     setIsFavorite(isFavoriteRecipe);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClick = () => {
