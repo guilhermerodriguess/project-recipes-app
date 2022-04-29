@@ -7,7 +7,7 @@ import FoodFilter from './FoodFilter';
 const CardRecipe = () => {
   const { data,
     requestAPIInitial,
-    // setRecipeID,
+    setRecipeID,
     requestAPIByFilter,
     toggleRequestAPI,
   } = useContext(RecipeContext);
@@ -18,7 +18,7 @@ const CardRecipe = () => {
     if (toggleRequestAPI) {
       return requestAPIByFilter();
     }
-    return requestAPIInitial();
+    requestAPIInitial();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggleRequestAPI]);
 
@@ -37,7 +37,7 @@ const CardRecipe = () => {
                   data-testid={ `${index}-recipe-card` }
                   onClick={ () => {
                     history.push(`/foods/${idMeal}`);
-                    // setRecipeID(idMeal);
+                    setRecipeID(idMeal);
                   } }
                   role="button"
                   tabIndex={ 0 }
@@ -76,7 +76,7 @@ const CardRecipe = () => {
                   data-testid={ `${index}-recipe-card` }
                   onClick={ () => {
                     history.push(`/drinks/${idDrink}`);
-                    // setRecipeID(idDrink);
+                    setRecipeID(idDrink);
                   } }
                   role="button"
                   tabIndex={ 0 }
