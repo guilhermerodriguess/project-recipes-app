@@ -3,14 +3,22 @@ html {
 }
 
 body {
-  background: linear-gradient(#e2dfdd, #fefeff);
   font-family: sans-serif;
   margin: 0;
   padding: 0;
 }
 
+.content {
+  background-attachment: fixed;
+  background-image: url('../images/foodBackground.png');
+  background-size: cover;
+  display: flex;
+  height: 640px;
+  width: 360px;
+}
+
 .login-box {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.877);
   border-radius: 10px;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   box-sizing: border-box;
@@ -46,7 +54,7 @@ body {
 }
 
 .login-box form button {
-  background-color: white;
+  background-color: #fc466b;
   border-style: none;
   color: black;
   display: inline-block;
@@ -68,7 +76,7 @@ body {
 }
 
 .login-box button:hover:disabled {
-  background: #fc466b;
+  background: #b80a2d;
 }
 
 .login-box button span {
@@ -76,3 +84,34 @@ body {
   position: absolute;
 }
 
+@media ( min-width : 720px ) {
+
+  .content {
+    height: 760px;
+    width: 100%;
+  }
+}
+
+@media ( min-width : 820px ) {
+
+  .content {
+    height: 1200px;
+    width: 100%;
+  }
+}
+
+@media ( min-width : 1079px ) {
+
+  .content {
+    height: 768px;
+    width: 100%;
+  }
+}
+
+@media ( min-width : 1918px ) {
+
+  .content {
+    height: 1080px;
+    width: 100%;
+  }
+}

@@ -28,39 +28,41 @@ const Login = () => {
   }, [email, password]);
 
   return (
-    <div className="login-box">
-      <h2>Login</h2>
-      <form>
-        <div className="user-box">
-          <input
-            value={ email }
-            type="email"
-            name="email"
-            placeholder="Email"
-            data-testid="email-input"
-            onChange={ (e) => setEmail(e.target.value) }
-          />
-        </div>
-        <div className="user-box">
-          <input
-            placeholder="Password"
-            value={ password }
-            type="password"
-            name="password"
-            required=""
-            data-testid="password-input"
-            onChange={ (e) => setPassword(e.target.value) }
-          />
-        </div>
-        <button
-          data-testid="login-submit-btn"
-          disabled={ btnDisabled }
-          type="button"
-          onClick={ onClick }
-        >
-          Entrar
-        </button>
-      </form>
+    <div className="content">
+      <div className="login-box">
+        <h2>Login</h2>
+        <form>
+          <div className="user-box">
+            <input
+              value={ email }
+              type="email"
+              name="email"
+              placeholder="Email"
+              data-testid="email-input"
+              onChange={ (e) => setEmail(e.target.value) }
+            />
+          </div>
+          <div className="user-box">
+            <input
+              placeholder="Password"
+              value={ password }
+              type="password"
+              name="password"
+              required=""
+              data-testid="password-input"
+              onChange={ (e) => setPassword(e.target.value) }
+            />
+          </div>
+          <button
+            data-testid="login-submit-btn"
+            disabled={ btnDisabled }
+            type="button"
+            onClick={ onClick }
+          >
+            Entrar
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
