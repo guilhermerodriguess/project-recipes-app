@@ -2,15 +2,17 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import CardRecipeRecomendation from '../components/CardRecipeRecomendation';
+import StartButton from '../components/StartButton';
+import FavoriteButton from '../components/FavoriteButton';
 import RecipeContext from '../context/RecipesContext';
 import { getIngredientsAndMeasures,
   requestRecipeRecomendation } from '../services/telaDeDetalhes';
+import ShareButton from '../components/ShareButton';
 
-const DetalhesDeReceita = ({ match: { params: { id } } }) => {
+const DetalhesDeReceita = ({ match: { params: { id }, url } }) => {
   const { dataRecipe, setDataRecipe,
     setRecomendation } = useContext(RecipeContext);
   const [loading, setLoading] = useState(true);
-
   const idFood = id;
   const history = useHistory();
   const pathFood = history.location.pathname.includes('/foods');
@@ -60,6 +62,9 @@ const DetalhesDeReceita = ({ match: { params: { id } } }) => {
           width="80 vn"
           height="80 vn"
         />
+        <br />
+        <ShareButton URL={ url } />
+        <FavoriteButton id={ idFood } path={ pathFood } />
         { getIngredientsAndMeasures(dataRecipe[0]) }
         {pathFood || dataRecipe[0].strAlcoholic}
         <p data-testid="instructions">{dataRecipe[0].strInstructions}</p>
@@ -73,16 +78,8 @@ const DetalhesDeReceita = ({ match: { params: { id } } }) => {
         />
       )}
         <CardRecipeRecomendation />
-        <button type="button" data-testid="share-btn">Compartilhar</button>
-        <button type="button" data-testid="favorite-btn">Favoritar</button>
-        <button
-          type="button"
-          data-testid="start-recipe-btn"
-          className="start-btn"
-        >
-          Start Recipe
+        {StartButton(idFood, pathFood, url)}
 
-        </button>
       </div>
     )
   );
@@ -93,6 +90,7 @@ DetalhesDeReceita.propTypes = {
     params: PropTypes.shape({
       id: PropTypes.string,
     }),
+    url: PropTypes.string,
   }).isRequired,
 };
 
