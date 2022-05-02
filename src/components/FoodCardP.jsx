@@ -35,9 +35,10 @@ const FoodCard = () => {
         <p data-testid="instructions">{dataRecipe[0].strInstructions}</p>
         { ingredients.map((item, index) => (
           <li
-          data-testid={ ´${index}-ingredient-step´ }
+            data-testid={ `${index}-ingredient-step` }
+            key={ Math.random() }
           >
-
+            { item }
           </li>
         )) }
         {pathFood || dataRecipe[0].strAlcoholic}

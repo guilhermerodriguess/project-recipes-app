@@ -104,3 +104,7 @@ html, body {
   bottom: 0;
   position: fixed;
 }
+
+.done-recipe-img {
+  width: 40%;
+}

@@ -7,7 +7,6 @@ import FoodFilter from './FoodFilter';
 const CardRecipe = () => {
   const { data,
     requestAPIInitial,
-    setRecipeID,
     requestAPIByFilter,
     toggleRequestAPI,
   } = useContext(RecipeContext);
@@ -35,10 +34,7 @@ const CardRecipe = () => {
                 <div
                   key={ Math.random() }
                   data-testid={ `${index}-recipe-card` }
-                  onClick={ () => {
-                    history.push(`/foods/${idMeal}`);
-                    setRecipeID(idMeal);
-                  } }
+                  onClick={ () => history.push(`/foods/${idMeal}`) }
                   role="button"
                   tabIndex={ 0 }
                   onKeyPress={ () => {} }
@@ -74,10 +70,7 @@ const CardRecipe = () => {
                 <div
                   key={ Math.random() }
                   data-testid={ `${index}-recipe-card` }
-                  onClick={ () => {
-                    history.push(`/drinks/${idDrink}`);
-                    setRecipeID(idDrink);
-                  } }
+                  onClick={ () => history.push(`/drinks/${idDrink}`) }
                   role="button"
                   tabIndex={ 0 }
                   onKeyPress={ () => {} }

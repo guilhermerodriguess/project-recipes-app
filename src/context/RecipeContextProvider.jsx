@@ -16,7 +16,6 @@ const RecipeContextProvider = ({ children }) => {
   const [textFilter, setTextFilter] = useState('');
 
   // Memorizando o ID da receita em uma variável
-  const [recipeID, setRecipeID] = useState('');
   const [dataRecipe, setDataRecipe] = useState(['']);
   const [recomendation, setRecomendation] = useState([]);
   const [pathFood, setPathFood] = useState(true);
@@ -217,8 +216,6 @@ const RecipeContextProvider = ({ children }) => {
     requestDrinkByButtonFilter,
     email,
     setEmail,
-    recipeID,
-    setRecipeID,
     exploreFoodsOrDrinks,
     toggleRequestAPI,
     setToggleRequestAPI,
