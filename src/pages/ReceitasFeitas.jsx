@@ -40,7 +40,7 @@ const ReceitasFeitas = () => {
         <Header pageTitle="Done Recipes" isSearch={ false } />
       </header>
 
-      <div>
+      <div className="done-recipe-buttons">
         <button
           type="button"
           data-testid="filter-by-all-btn"
