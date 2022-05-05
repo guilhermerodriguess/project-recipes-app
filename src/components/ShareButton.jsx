@@ -29,8 +29,8 @@ function ShareButton({ URL, dataId }) {
 }
 
 ShareButton.propTypes = {
-  URL: PropTypes.string.isRequired,
   dataId: PropTypes.string.isRequired,
+  URL: PropTypes.string.isRequired,
 };
 
 export default ShareButton;

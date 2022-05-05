@@ -172,3 +172,10 @@ html, body {
   padding: 3px 0;
   width: 30%;
 }
+.favorite-share-btn {
+  display: flex;
+}
+
+.ingredients-check:checked + span {
+  text-decoration: line-through;
+}

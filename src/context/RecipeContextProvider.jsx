@@ -20,6 +20,9 @@ const RecipeContextProvider = ({ children }) => {
   const [recomendation, setRecomendation] = useState([]);
   const [pathFood, setPathFood] = useState(true);
 
+  // Todos os Ingredientes de Receita
+  const [allIngredients, setAllIngredients] = useState([]);
+
   // Requisições das Api's de comidas.
   // Caso não receba nenhuma receita, retorna um alerta.
   const ALERT_NO_RECIPE = 'Sorry, we haven\'t found any recipes for these filters.';
@@ -225,6 +228,8 @@ const RecipeContextProvider = ({ children }) => {
     setRecomendation,
     pathFood,
     setPathFood,
+    allIngredients,
+    setAllIngredients,
   };
 
   return (

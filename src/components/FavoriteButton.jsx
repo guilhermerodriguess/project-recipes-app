@@ -7,7 +7,8 @@ import RecipeContext from '../context/RecipesContext';
 function FavoriteButton({ id, path }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const { dataRecipe } = useContext(RecipeContext);
-  const savedFavoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+  const savedFavoriteRecipes = JSON.parse(localStorage
+    .getItem('favoriteRecipes')) || [];
 
   const favoriteRecipe = {
     id,
