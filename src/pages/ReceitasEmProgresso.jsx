@@ -12,19 +12,18 @@ const ReceitasEmProgresso = ({ match: { params: { id } } }) => {
   const { dataRecipe, setDataRecipe } = useContext(RecipeContext);
   const [loading, setLoading] = useState(true);
   const idFood = id;
+  const URL = pathFood ? `/foods/${idFood}` : `/drinks/${idFood}`;
 
   const requestRecipeAPI = async () => {
     const mealURL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
     const drinkURL = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
-    const URL = pathFood ? mealURL : drinkURL;
-    const response = await fetch(URL);
+    const url = pathFood ? mealURL : drinkURL;
+    const response = await fetch(url);
     const { meals, drinks } = await response.json();
     const data = pathFood ? meals : drinks;
     setDataRecipe(data);
     setLoading(false);
   };
-
-  const URL = pathFood ? `/foods/${idFood}` : `/drinks/${idFood}`;
 
   useEffect(() => {
     requestRecipeAPI();
