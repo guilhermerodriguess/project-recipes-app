@@ -173,6 +173,12 @@ html, body {
   width: 30%;
 }
 
+.done-recipe-non-recipe {
+  text-align: center;
+  height: 400px;
+  margin: 50% 15%;
+}
+
 .favorite-share-btn {
   display: flex;
 }

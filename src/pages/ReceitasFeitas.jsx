@@ -5,30 +5,9 @@ import DoneFood from '../components/DoneFood';
 
 const ReceitasFeitas = () => {
   const [type, setType] = useState('all');
-  const doneRecipes = [
-    {
-      id: '52771',
-      type: 'food',
-      nationality: 'Italian',
-      category: 'Vegetarian',
-      alcoholicOrNot: '',
-      name: 'Spicy Arrabiata Penne',
-      image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
-      doneDate: '23/06/2020',
-      tags: ['Pasta', 'Curry'],
-    },
-    {
-      id: '178319',
-      type: 'drink',
-      nationality: '',
-      category: 'Cocktail',
-      alcoholicOrNot: 'Alcoholic',
-      name: 'Aquamarine',
-      image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
-      doneDate: '23/06/2020',
-      tags: [],
-    },
-  ];
+  const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
+
+  console.log(doneRecipes);
 
   const renderRecipes = type === 'all'
     ? doneRecipes
@@ -66,11 +45,19 @@ const ReceitasFeitas = () => {
         </button>
       </div>
 
-      <div>
-        <DoneFood
-          food={ renderRecipes }
-        />
-      </div>
+      <section>
+        { renderRecipes.length === 0
+          ? (
+            <div className="done-recipe-non-recipe">
+              <h3>Você não concluiu nenhuma comida ainda...</h3>
+            </div>
+          )
+          : (
+            <DoneFood
+              food={ renderRecipes }
+            />
+          ) }
+      </section>
 
     </section>
   );

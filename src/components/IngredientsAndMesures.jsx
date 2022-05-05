@@ -75,17 +75,17 @@ const IngredientsAndMesures = ({ id, pathFood }) => {
         category: dataRecipe[0].strCategory || '',
         alcoholicOrNot: dataRecipe[0].strAlcoholic || '',
         name: dataRecipe[0].strMeal || dataRecipe[0].strDrink,
-        image: dataRecipe[0].strMealthumb || dataRecipe[0].strDrinkThumb,
+        image: dataRecipe[0].strMealThumb || dataRecipe[0].strDrinkThumb,
         doneDate: `${dia}/${mes}/${ano}`,
         tags,
       }];
     const savedOnLocalStorage = JSON.parse(localStorage.getItem('doneRecipes')) || [];
     const toLocalStorage = savedOnLocalStorage.concat(doneRecipe);
 
-    const vaiOuNaoVai = savedOnLocalStorage
+    const isGoingToLocalStorage = savedOnLocalStorage
       .some((element) => element.id === doneRecipe[0].id);
 
-    if (!vaiOuNaoVai) {
+    if (!isGoingToLocalStorage) {
       localStorage.setItem('doneRecipes', JSON.stringify(toLocalStorage));
     }
   };
