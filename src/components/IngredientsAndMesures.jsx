@@ -58,6 +58,38 @@ const IngredientsAndMesures = ({ id, pathFood }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleFinish = () => {
+    const data = new Date();
+    const dia = data.getDate();
+    const mes = data.getMonth() + 1;
+    const ano = data.getFullYear();
+
+    const stringOfTags = dataRecipe[0].strTags || 'Carlin';
+    const tags = stringOfTags.split(',') || '';
+
+    const doneRecipe = [
+      {
+        id,
+        type: pathFood ? 'food' : 'drink',
+        nationality: dataRecipe[0].strArea,
+        category: dataRecipe[0].strCategory || '',
+        alcoholicOrNot: dataRecipe[0].strAlcoholic || '',
+        name: dataRecipe[0].strMeal || dataRecipe[0].strDrink,
+        image: dataRecipe[0].strMealthumb || dataRecipe[0].strDrinkThumb,
+        doneDate: `${dia}/${mes}/${ano}`,
+        tags,
+      }];
+    const savedOnLocalStorage = JSON.parse(localStorage.getItem('doneRecipes')) || [];
+    const toLocalStorage = savedOnLocalStorage.concat(doneRecipe);
+
+    const vaiOuNaoVai = savedOnLocalStorage
+      .some((element) => element.id === doneRecipe[0].id);
+
+    if (!vaiOuNaoVai) {
+      localStorage.setItem('doneRecipes', JSON.stringify(toLocalStorage));
+    }
+  };
+
   return (
     <div className="ingredients-in-progress">
       {ingredients.map((element, index) => (
@@ -81,6 +113,7 @@ const IngredientsAndMesures = ({ id, pathFood }) => {
           type="button"
           disabled={ isDisabled }
           data-testid="finish-recipe-btn"
+          onClick={ handleFinish }
         >
           Finish Recipe
         </button>
