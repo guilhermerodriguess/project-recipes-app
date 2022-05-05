@@ -4,7 +4,6 @@ import ShareButton from './ShareButton';
 
 const DoneFood = ({ food: foods }) => {
   const history = useHistory();
-  console.log(history);
 
   const redirectToDetails = ({ id, type }) => {
     if (type === 'food') {
