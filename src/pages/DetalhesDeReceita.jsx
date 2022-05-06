@@ -66,7 +66,7 @@ const DetalhesDeReceita = ({ match: { params: { id }, url } }) => {
         />
         <br />
         <ShareButton URL={ URL } dataId="share-btn" />
-        <FavoriteButton id={ idFood } path={ pathFood } />
+        <FavoriteButton id={ idFood } path={ pathFood } dataId="favorite-btn" />
         { getIngredientsAndMeasures(dataRecipe[0]) }
         <p data-testid="instructions">{dataRecipe[0].strInstructions}</p>
         { pathFood

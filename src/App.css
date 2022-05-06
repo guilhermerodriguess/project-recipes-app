@@ -174,9 +174,9 @@ html, body {
 }
 
 .done-recipe-non-recipe {
-  text-align: center;
   height: 400px;
   margin: 50% 15%;
+  text-align: center;
 }
 
 .favorite-share-btn {
