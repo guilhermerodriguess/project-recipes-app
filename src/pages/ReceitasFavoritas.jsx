@@ -1,59 +1,50 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import ShareButton from '../components/ShareButton';
 import FavoriteButton from '../components/FavoriteButton';
 
 const ReceitasFavoritas = () => {
-  const [updateLocalStorage, setUpdateLocalState] = useState(true);
+  const [updateState, setUpdateState] = useState(true);
   const getStorageFavoriteRecipes = JSON.parse(
     localStorage.getItem('favoriteRecipes'),
   ) || [];
-  const history = useHistory();
 
-  const [types, setTypes] = useState('all');
-  const favoritesRecipes = types === 'all'
+  const [filter, setFilter] = useState('all');
+  const favoritesRecipes = filter === 'all'
     ? getStorageFavoriteRecipes
     : getStorageFavoriteRecipes.filter(
-      (favorites) => favorites.type === types,
+      (favorites) => favorites.type === filter,
     );
-
-  const redirectToDetails = (type, id) => {
-    if (type === 'food') {
-      history.push(`/foods/${id}`);
-    } else {
-      history.push(`/drinks/${id}`);
-    }
-  };
 
   return (
     <>
-      <header>
-        <Header pageTitle="Favorite Recipes" isSearch={ false } />
-      </header>
+      <Header pageTitle="Favorite Recipes" isSearch={ false } />
 
       <main>
-        <button
-          data-testid="filter-by-all-btn"
-          type="button"
-          onClick={ () => setTypes('all') }
-        >
-          All
-        </button>
-        <button
-          data-testid="filter-by-food-btn"
-          type="button"
-          onClick={ () => setTypes('food') }
-        >
-          Food
-        </button>
-        <button
-          data-testid="filter-by-drink-btn"
-          type="button"
-          onClick={ () => setTypes('drink') }
-        >
-          Drinks
-        </button>
+        <section>
+          <button
+            data-testid="filter-by-all-btn"
+            type="button"
+            onClick={ () => setFilter('all') }
+          >
+            All
+          </button>
+          <button
+            data-testid="filter-by-food-btn"
+            type="button"
+            onClick={ () => setFilter('food') }
+          >
+            Food
+          </button>
+          <button
+            data-testid="filter-by-drink-btn"
+            type="button"
+            onClick={ () => setFilter('drink') }
+          >
+            Drinks
+          </button>
+        </section>
 
         <section>
           {favoritesRecipes.map(
@@ -62,33 +53,23 @@ const ReceitasFavoritas = () => {
               index,
             ) => (
               <article key={ id }>
-                <div
-                  onClick={ () => redirectToDetails(type, id) }
-                  role="button"
-                  tabIndex={ 0 }
-                  onKeyPress={ () => {} }
-                >
+                <Link to={ type === 'food' ? `/foods/${id}` : `/drinks/${id}` }>
                   <img
                     data-testid={ `${index}-horizontal-image` }
                     src={ image }
                     alt={ name }
                   />
-                </div>
+                </Link>
+
                 <p data-testid={ `${index}-horizontal-top-text` }>
                   {alcoholicOrNot === ''
                     ? `${nationality} - ${category}`
                     : alcoholicOrNot}
                 </p>
 
-                <div
-                  onClick={ () => redirectToDetails(type, id) }
-                  role="button"
-                  tabIndex={ 0 }
-                  onKeyPress={ () => {} }
-                  data-testid={ `${index}-horizontal-name` }
-                >
-                  {name}
-                </div>
+                <Link to={ type === 'food' ? `/foods/${id}` : `/drinks/${id}` }>
+                  <p data-testid={ `${index}-horizontal-name` }>{name}</p>
+                </Link>
 
                 <ShareButton
                   dataId={ `${index}-horizontal-share-btn` }
@@ -96,7 +77,7 @@ const ReceitasFavoritas = () => {
                 />
 
                 <span
-                  onClick={ () => setUpdateLocalState(!updateLocalStorage) }
+                  onClick={ () => setUpdateState(!updateState) }
                   role="button"
                   tabIndex={ 0 }
                   onKeyPress={ () => {} }
@@ -105,6 +86,7 @@ const ReceitasFavoritas = () => {
                     dataId={ `${index}-horizontal-favorite-btn` }
                     path={ false }
                     id={ id }
+                    onClick={ () => setUpdateState(!updateState) }
                   />
                 </span>
               </article>
