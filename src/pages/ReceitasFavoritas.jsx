@@ -59,15 +59,13 @@ const ReceitasFavoritas = () => {
                     src={ image }
                     alt={ name }
                   />
-                </Link>
 
-                <p data-testid={ `${index}-horizontal-top-text` }>
-                  {alcoholicOrNot === ''
-                    ? `${nationality} - ${category}`
-                    : alcoholicOrNot}
-                </p>
+                  <p data-testid={ `${index}-horizontal-top-text` }>
+                    {alcoholicOrNot === ''
+                      ? `${nationality} - ${category}`
+                      : alcoholicOrNot}
+                  </p>
 
-                <Link to={ type === 'food' ? `/foods/${id}` : `/drinks/${id}` }>
                   <p data-testid={ `${index}-horizontal-name` }>{name}</p>
                 </Link>
 
