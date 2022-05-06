@@ -55,18 +55,21 @@ const ReceitasFavoritas = () => {
               <article key={ id }>
                 <Link to={ type === 'food' ? `/foods/${id}` : `/drinks/${id}` }>
                   <img
+                    className="done-recipe-img"
                     data-testid={ `${index}-horizontal-image` }
                     src={ image }
                     alt={ name }
                   />
+                </Link>
 
-                  <p data-testid={ `${index}-horizontal-top-text` }>
-                    {alcoholicOrNot === ''
-                      ? `${nationality} - ${category}`
-                      : alcoholicOrNot}
-                  </p>
+                <p data-testid={ `${index}-horizontal-top-text` }>
+                  {alcoholicOrNot === ''
+                    ? `${nationality} - ${category}`
+                    : alcoholicOrNot}
+                </p>
 
-                  <p data-testid={ `${index}-horizontal-name` }>{name}</p>
+                <Link to={ type === 'food' ? `/foods/${id}` : `/drinks/${id}` }>
+                  <h1 data-testid={ `${index}-horizontal-name` }>{name}</h1>
                 </Link>
 
                 <ShareButton
