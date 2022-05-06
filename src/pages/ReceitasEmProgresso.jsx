@@ -53,7 +53,7 @@ const ReceitasEmProgresso = ({ match: { params: { id } } }) => {
           />
           <div className="favorite-share-btn">
             <ShareButton URL={ URL } dataId="share-btn" />
-            <FavoriteButton id={ id } path={ pathFood } />
+            <FavoriteButton id={ id } path={ pathFood } dataId="favorite-btn" />
           </div>
           <br />
           <p data-testid="instructions">{dataRecipe[0].strInstructions}</p>

@@ -4,7 +4,7 @@ import whiteHeart from '../images/whiteHeartIcon.svg';
 import blackHeart from '../images/blackHeartIcon.svg';
 import RecipeContext from '../context/RecipesContext';
 
-function FavoriteButton({ id, path }) {
+function FavoriteButton({ id, path, dataId }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const { dataRecipe } = useContext(RecipeContext);
   const savedFavoriteRecipes = JSON.parse(localStorage
@@ -44,7 +44,7 @@ function FavoriteButton({ id, path }) {
     <button
       src={ isFavorite ? blackHeart : whiteHeart }
       type="button"
-      data-testid="favorite-btn"
+      data-testid={ dataId }
       onClick={ handleClick }
     >
       <img
@@ -58,6 +58,7 @@ function FavoriteButton({ id, path }) {
 FavoriteButton.propTypes = {
   id: PropTypes.string.isRequired,
   path: PropTypes.bool.isRequired,
+  dataId: PropTypes.string.isRequired,
 };
 
 export default FavoriteButton;
