@@ -85,8 +85,9 @@ const ReceitasFavoritas = () => {
                   role="button"
                   tabIndex={ 0 }
                   onKeyPress={ () => {} }
+                  data-testid={ `${index}-horizontal-name` }
                 >
-                  <p data-testid={ `${index}-horizontal-name` }>{name}</p>
+                  {name}
                 </div>
 
                 <ShareButton
